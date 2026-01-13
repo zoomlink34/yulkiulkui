@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MASTER PANEL</title>
+    <style>
+        body { background: #0B0E11; color: #fff; font-family: sans-serif; padding: 20px; }
+        .card { background: #1E2329; padding: 20px; border-radius: 10px; max-width: 400px; margin: auto; }
+        input { width: 100%; padding: 12px; margin: 10px 0; box-sizing: border-box; }
+        .btn { width: 100%; padding: 15px; background: #FCD535; border: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>DIRECT PUBLISH</h2>
+        <input type="text" id="mBrand" placeholder="Brand Name">
+        <input type="text" id="mImg" placeholder="Logo URL">
+        <input type="text" id="mWeb" placeholder="Website Link">
+        <input type="number" id="mPlot" placeholder="Plot ID (1-5000)">
+        <button class="btn" onclick="directPublish()">PUBLISH LIVE</button>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+    <script>
+        firebase.initializeApp({databaseURL: "https://the-5k-elite-legacy-default-rtdb.firebaseio.com/"});
+        function directPublish() {
+            const name = document.getElementById('mBrand').value, img = document.getElementById('mImg').value, 
+                  web = document.getElementById('mWeb').value, pid = parseInt(document.getElementById('mPlot').value);
+            const x = ((pid-1)%100)*40, y = Math.floor((pid-1)/100)*25;
+            firebase.database().ref('pixels/'+pid).set({name, imageUrl:img, link:web||"#", x, y, plotID:pid}).then(() => alert("Live!"));
+        }
+    </script>
+</body>
+</html>
