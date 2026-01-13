@@ -1,0 +1,24 @@
+:root { --b-yellow: #FCD535; --b-dark: #1E2329; --b-bg: #0B0E11; }
+body { background: var(--b-bg); color: #EAECEF; font-family: 'Inter', sans-serif; margin: 0; text-align: center; overflow-x: hidden; }
+.top-nav { display: flex; justify-content: space-between; padding: 15px 5%; background: var(--b-dark); border-bottom: 1px solid #333; align-items: center; }
+.pill { padding: 8px 15px; border: 1px solid var(--b-yellow); color: var(--b-yellow); border-radius: 4px; font-size: 11px; cursor: pointer; margin-right: 5px; font-weight: bold; }
+.social-icons a { font-size: 20px; margin-left: 15px; text-decoration: none; color: #fff; }
+.shimmer-title { 
+    font-size: 45px; font-weight: 900; 
+    background: linear-gradient(45deg, #FCD535, #fff, #FCD535, #ff9900);
+    background-size: 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    animation: gradientMove 4s ease infinite; margin: 25px 0;
+}
+@keyframes gradientMove { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+.stats-row { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; }
+.stat-box { background: var(--b-dark); padding: 12px 20px; border-radius: 5px; border: 1px solid #333; font-weight: bold; font-size: 14px; }
+.stat-box.sold { color: #2ebd85; border-color: #2ebd85; }
+.stat-box.rem { color: var(--b-yellow); border-color: var(--b-yellow); }
+.map-container { width: 95%; max-width: 1200px; margin: 0 auto; border: 4px solid #333; border-radius: 10px; background: #000; overflow: hidden; position: relative; }
+#viewport { aspect-ratio: 16/9; cursor: move; }
+.cta-gold { background: var(--b-yellow); color: #000; padding: 15px 35px; border-radius: 5px; font-weight: 900; text-decoration: none; display: inline-block; margin: 10px; }
+.cta-outline { border: 1px solid #5e6673; color: #EAECEF; padding: 15px 35px; border-radius: 5px; text-decoration: none; display: inline-block; margin: 10px; }
+.search-pro input { padding: 12px; background: #1E2329; border: 1px solid #444; color: #fff; border-radius: 4px; width: 200px; outline: none; }
+.search-pro button { padding: 12px 20px; background: var(--b-yellow); border: none; font-weight: bold; cursor: pointer; border-radius: 4px; margin-left: 5px; }
+.wa-float { position: fixed; bottom: 20px; right: 20px; background: #2ebd85; color: #fff; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; }
+footer { padding: 30px; color: #5e6673; font-size: 13px; }
