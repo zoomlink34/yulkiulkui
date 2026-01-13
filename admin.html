@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CEO DASHBOARD | ELITE</title>
+    <style>
+        body { font-family: sans-serif; background: #f0f0f0; padding: 20px; }
+        .card { background: #fff; padding: 20px; margin-bottom: 20px; border-radius: 10px; border-left: 8px solid #FCD535; }
+        input { padding: 10px; width: 280px; margin-right: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { padding: 10px 20px; cursor: pointer; border-radius: 5px; border: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>THE 5K ELITE LEGACY - CEO ADMIN</h1>
+    <div id="order-list"></div>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+    <script>
+        firebase.initializeApp({databaseURL: "https://the-5k-elite-legacy-default-rtdb.firebaseio.com/"});
+        const db = firebase.database();
+        db.ref('orders').on('value', s => {
+            const list = document.getElementById('order-list'); list.innerHTML = "";
+            const data = s.val(); if(!data) return list.innerHTML = "No pending orders.";
+            Object.keys(data).forEach(id => {
+                list.innerHTML += `<div class="card">
+                    <b>Plot: ${id}</b> | Brand: ${data[id].name} <br><br>
+                    <input type="text" id="img_${id}" placeholder="Logo URL">
+                    <input type="text" id="web_${id}" placeholder="Website Link">
+                    <button onclick="approve('${id}', '${data[id].name}')" style="background:#2ebd85; color:white;">APPROVE</button>
+                    <button onclick="reject('${id}')" style="background:red; color:white;">REJECT</button>
+                </div>`;
+            });
+        });
+        function approve(id, name) {
+            const img = document.getElementById('img_'+id).value, web = document.getElementById('web_'+id).value;
+            if(!img) return alert("Link required!");
+            const x = ((id-1)%100)*40, y = Math.floor((id-1)/100)*25;
+            db.ref('pixels/'+id).set({name, imageUrl:img, link:web||"#", x, y, plotID:id}).then(() => {
+                db.ref('notifications/'+id).set({status: "Approved", message: "Live!"});
+                db.ref('orders/'+id).remove();
+            });
+        }
+        function reject(id) { db.ref('orders/'+id).remove(); }
+    </script>
+</body>
+</html>
