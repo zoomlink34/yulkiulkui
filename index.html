@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE 5K ELITE LEGACY | OFFICIAL</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+</head>
+<body class="binance-theme">
+<div class="top-nav">
+    <div class="payment-pills">
+        <div class="pill yellow" onclick="copyVal('912221034')">BINANCE ID: 912221034</div>
+        <div class="pill white" onclick="copyVal('TTapBkTqrDnzHbWzek6wSBUTcJKFmR8Ws6')">USDT (TRC20)</div>
+    </div>
+    <div class="social-icons">
+        <a href="#" class="fb"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="ig"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="tw"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="yt"><i class="fab fa-youtube"></i></a>
+    </div>
+</div>
+<div class="hero">
+    <h1 class="shimmer-title">THE 5K ELITE LEGACY</h1>
+    <div class="stats-row">
+        <div class="stat-box">TOTAL: 5,000</div>
+        <div class="stat-box sold">CLAIMED: <span id="sold-count">0</span></div>
+        <div class="stat-box rem">VACANT: <span id="rem-count">5,000</span></div>
+    </div>
+    <div class="actions">
+        <a href="order.html" class="cta-gold">RESERVE YOUR LEGACY ($10)</a>
+        <a href="dashboard.html" class="cta-outline">TRACK STATUS</a>
+    </div>
+    <div class="search-pro">
+        <input type="number" id="searchInput" placeholder="Search Plot # (1-5000)">
+        <button onclick="searchPlot()">SEARCH</button>
+    </div>
+</div>
+<div id="legacy-tooltip" style="position: absolute; display: none; background: rgba(0,0,0,0.95); color: #FCD535; padding: 8px 12px; border-radius: 4px; font-size: 13px; pointer-events: none; z-index: 10000; border: 1px solid #FCD535; box-shadow: 0 4px 15px rgba(0,0,0,0.5);"></div>
+
+<div class="map-container">
+    <div id="viewport"><div id="mover"><canvas id="mainCanvas"></canvas></div></div>
+</div>
+<footer>The 5K Elite Legacy © 2026 KAWSAR AHMED | Professional Global Service</footer>
+<a href="support.html" class="wa-float"><i class="fab fa-whatsapp"></i> 24/7 SUPPORT</a>
+<script src="script.js"></script>
+</body>
+</html>
